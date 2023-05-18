@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard de Gráficos</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dashboard de Gráficos</h1>
+    
+    <div class="chart-container">
+        <canvas id="bar-chart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="line-chart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="pie-chart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="doughnut-chart"></canvas>
+    </div>
+
+    <div class="chart-container">
+        <canvas id="radar-chart"></canvas>
+    </div>
+
+    <script>
+        // Datos de ejemplo
+        var barData = {
+            labels: ['A', 'B', 'C', 'D', 'E'],
+            datasets: [{
+                label: 'Datos de ejemplo',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: 'rgba(54, 162, 235, 0.5)'
+            }]
+        };
+
+        var lineData = {
+            labels: ['A', 'B', 'C', 'D', 'E'],
+            datasets: [{
+                label: 'Datos de ejemplo',
+                data: [12, 19, 3, 5, 2],
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false
+            }]
+        };
+
+        var pieData = {
+            labels: ['A', 'B', 'C', 'D', 'E'],
+            datasets: [{
+                label: 'Datos de ejemplo',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ]
+            }]
+        };
+
+        var doughnutData = {
+            labels: ['A', 'B', 'C', 'D', 'E'],
+            datasets: [{
+                label: 'Datos de ejemplo',
+                data: [12, 19, 3, 5, 2],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ]
+            }]
+        };
+
+        var radarData = {
+            labels: ['A', 'B', 'C', 'D', 'E'],
+            datasets: [{
+                label: 'Datos de ejemplo',
+                data: [12, 19, 3, 5, 2],
+                borderColor:'rgba(255, 99, 132, 1)',
+backgroundColor: 'rgba(255, 99, 132, 0.5)',
+fill: true,
+pointBackgroundColor: 'rgba(255, 99, 132, 1)',
+pointBorderColor: '#fff',
+pointHoverBackgroundColor: '#fff',
+pointHoverBorderColor: 'rgba(255, 99, 132, 1)'
+}]
+};    // Configuración de los gráficos
+    var chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    };
+
+    // Crear los gráficos
+    var barChart = new Chart(document.getElementById('bar-chart'), {
+        type: 'bar',
+        data: barData,
+        options: chartOptions
+    });
+
+    var lineChart = new Chart(document.getElementById('line-chart'), {
+        type: 'line',
+        data: lineData,
+        options: chartOptions
+    });
+
+    var pieChart = new Chart(document.getElementById('pie-chart'), {
+        type: 'pie',
+        data: pieData,
+        options: chartOptions
+    });
+
+    var doughnutChart = new Chart(document.getElementById('doughnut-chart'), {
+        type: 'doughnut',
+        data: doughnutData,
+        options: chartOptions
+    });
+
+    var radarChart = new Chart(document.getElementById('radar-chart'), {
+        type: 'radar',
+        data: radarData,
+        options: chartOptions
+    });
+</script>
+
+</body>
+</html>

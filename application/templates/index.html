@@ -1,0 +1,129 @@
+{% extends "layout.html" %} 
+
+
+<div class="row p-4">
+  <div class="card m-auto" style="width: 90%">
+    <div class="card-body">
+      <div id="date_updated">
+        <p>Datos actualizados a la fecha: 05 de Mayo de 2023</p>
+      </div>
+    </div>
+  </div>
+
+  {% block contentGraphOne %} 
+  <div class="card m-auto" style="width: 90%">
+    <div class="card-body">
+      <div id="chart1">
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  {% block contentGraphOneDescription %}
+  <div class="mt-4 text-center small">
+    <p>Estadísticas:</p>
+    <span class="mr-2">
+      Mínimo: {{min_df1}}
+    </span>
+    <span class="mr-2">
+      Máximo: {{max_df1}}
+    </span>
+    <span class="mr-2">
+      Media: {{mean_df1}}
+    </span>
+    <span class="mr-2">
+      Desv.Estándar: {{desv_df1}}
+    </span>
+  </div>
+  {% endblock %}
+
+  {% block contentGraphTwo %} 
+  <div class="card m-auto" style="width: 90%">
+    <div class="card-body">
+      <div id="chart2">
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block contentGraphTwoDescription %}
+  <div class="mt-4 text-center small">
+    <p>Estadísticas:</p>
+    <span class="mr-2">
+      Mínimo: {{min_df2}}
+    </span>
+    <span class="mr-2">
+      Máximo: {{max_df2}}
+    </span>
+    <span class="mr-2">
+      Media: {{mean_df2}}
+    </span>
+    <span class="mr-2">
+      Desv.Estándar: {{desv_df2}}
+    </span>
+  </div>
+  {% endblock %}
+
+  {% block contentGraphThree %}
+  <div class="card m-auto" style="width: 90%">
+    <div class="card-body">
+      <div id="chart3">
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  {% block contentGraphThreeDescription %}
+  <div class="mt-4 text-center small">
+    <p>Palabras más comunes:</p>
+    <span class="mr-2">
+      {{info_df3}}
+    </span>
+  </div>
+  {% endblock %}
+
+  
+  {% block contentGraphFour %}
+  <div class="card m-auto" style="width: 90%">
+    <div class="card-body">
+      <div id="chart4">
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  
+  {% block contentGraphFourDescription %}
+  <div class="mt-4 text-center small">
+    <p>Estadísticas:</p>
+    <span class="mr-2">
+      Mínimo: {{min_df4}}
+    </span>
+    <span class="mr-2">
+      Máximo: {{max_df4}}
+    </span>
+    <span class="mr-2">
+      Media: {{mean_df4}}
+    </span>
+    <span class="mr-2">
+      Desv.Estándar: {{desv_df4}}
+    </span>
+  </div>
+  {% endblock %}
+</div>
+
+<!-- Plotly CDN -->
+{% block content %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+  var graphs1 = {{ graphJSON1 | safe}};
+  Plotly.plot("chart1", graphs1,{});
+
+  var graphs2 = {{ graphJSON2 | safe}};
+  Plotly.plot("chart2", graphs2,{});
+
+  var graphs3 = {{ graphJSON3 | safe}};
+  Plotly.plot("chart3", graphs3,{});
+
+  var graphs4 = {{ graphJSON4 | safe}};
+  Plotly.plot("chart4", graphs4,{});
+</script>
+{% endblock %}
