@@ -47,16 +47,16 @@ def index():
     
     graphJSON2 = json.dumps(fig2, cls =plotly.utils.PlotlyJSONEncoder)
 
-    with open('trends.csv', 'rb') as f:
+    with open('categorias_mas_vendidas.csv', 'rb') as f:
         enc = chardet.detect(f.read())  # or readline if the file is large
     
-    df3= pd.read_csv('trends.csv', encoding = enc['encoding'])
+    df3= pd.read_csv('categorias_mas_vendidas.csv', encoding = enc['encoding'])
 
     fig3 = go.Figure(data=[go.Table(
     header=dict(values=list(df3.columns),
                 fill_color='#4e73df',
                 align='left'),
-    cells=dict(values=[df3.keyword, df3.url],
+    cells=dict(values=[df3.trimestre, df3.categoria,df3.cantidad],
                fill_color='#EFF2FB',
                align='left'))
     ])
@@ -98,7 +98,7 @@ def index():
     mean_2 = df2['rating_average'].mean()
     std_2 = df2['rating_average'].std()
 
-    series_df3 = np.asarray(df3['keyword'])
+    series_df3 = np.asarray(df3['trimestre'])
     list_words = []
 
     for x in series_df3:

@@ -36,9 +36,10 @@ def get_trends():
         api_response = api_instance.resource_get(resource, access_token)
         pprint(api_response)
 
-        columns = ['keyword','url']
+        columns = ['rango','categoria','cantidad']
         
-        with open('trends.csv', 'w') as csvfile:
+        #with open('trends.csv', 'w') as csvfile:
+        with open('categorias_mas_vendidas.csv', 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames = columns)
             writer.writeheader()
             writer.writerows(api_response)
